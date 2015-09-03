@@ -1,0 +1,26 @@
+== Test for documentation and generation of documentation
+
+First: create a directory src/main/asciidoc and src/main/resources
+
+Linking to a class like in javadoc `DemoClass`
+
+We want to embed some source code.
+
+Create a class under example and link to the method you want to display.
+Here a method without parameters:
+
+[source,java]
+----
+def test = "test"
+def test2 = "test2"
+
+----
+
+Here an example with parameter:
+
+[source,java]
+----
+def test = testString
+def test2 = "test2"
+
+----
