@@ -10,7 +10,13 @@ Using the package-info as documentation source has several advantages
 
 == How to create documentation by using the package-info.java
 
-First: create a directory src/main/asciidoc and src/main/resources inside the project
+* First: create a directory src/main/asciidoc and src/main/resources inside the project
+* VERY IMPORTANT: add some annotations to the package-info before the package definition:
+** @Document(fileName = "index.adoc")
+** @GenModule(name = "vertx-test", groupPackageName = "de.braintags")
+Especially the parameter groupPackageName is very important and must fit the current package. Its default value is "io.vertx". 
+If you don't adapt that to your classpath, some very unexpected results will and errors occur ( see above )
+
 
 Linking to a class like in javadoc `link:../../apidocs/de/braintags/testpackage/DemoClass.html[DemoClass]`
 
@@ -30,6 +36,7 @@ Here an example with parameter:
 String test = testString;
 String test2 = "test2";
 ----
+
 
 Some textformats:
 *Bold text*
@@ -62,8 +69,4 @@ More information you will find at http://www.methods.co.nz/asciidoc/userguide.ht
 Could not generate model for de.braintags.testpackage: A module package name (de.braintags.testpackage) 
 must be prefixed by the group package name (io.vertx)`
 
-In this case running in Eclipse a refresh over the project and then `Maven -> Update Project` 
-and generating again seems to help. Sometimes this has to done two times.
-
-* Changes in the package-info are not automatically transferred. Before we have to empty the build directory 
-and then rebuild, including the problems of the previous description.
+SOLUTION: Define the parameter "groupPackageName" in annotation @GenModule

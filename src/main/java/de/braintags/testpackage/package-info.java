@@ -22,8 +22,14 @@
  * 
  * == How to create documentation by using the package-info.java
  * 
- * First: create a directory src/main/asciidoc and src/main/resources inside the project
- *
+ * * First: create a directory src/main/asciidoc and src/main/resources inside the project
+ * * VERY IMPORTANT: add some annotations to the package-info before the package definition:
+ * ** @Document(fileName = "index.adoc")
+ * ** @GenModule(name = "vertx-test", groupPackageName = "de.braintags")
+ * Especially the parameter groupPackageName is very important and must fit the current package. Its default value is "io.vertx". 
+ * If you don't adapt that to your classpath, some very unexpected results will and errors occur ( see above )
+ * 
+ * 
  * Linking to a class like in javadoc {@link de.braintags.testpackage.DemoClass}
  *
  * We want to embed some source code. Create a class under example and link to the method you want to display.
@@ -40,6 +46,7 @@
  * ----
  * {@link examples.Examples#example2(java.lang.String)}
  * ----
+ * 
  * 
  * Some textformats:
  * *Bold text*
@@ -72,11 +79,8 @@
  * Could not generate model for de.braintags.testpackage: A module package name (de.braintags.testpackage) 
  * must be prefixed by the group package name (io.vertx)`
  * 
- * In this case running in Eclipse a refresh over the project and then `Maven -> Update Project` 
- * and generating again seems to help. Sometimes this has to done two times.
+ * SOLUTION: Define the parameter "groupPackageName" in annotation @GenModule
  * 
- * * Changes in the package-info are not automatically transferred. Before we have to empty the build directory 
- * and then rebuild, including the problems of the previous description.
  * 
  * 
  * @author Michael Remme
@@ -84,7 +88,7 @@
  */
 
 @Document(fileName = "index.adoc")
-@GenModule(name = "vertx-test")
+@GenModule(name = "vertx-test", groupPackageName = "de.braintags")
 package de.braintags.testpackage;
 
 import io.vertx.codegen.annotations.GenModule;

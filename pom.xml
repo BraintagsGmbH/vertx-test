@@ -7,6 +7,7 @@
 	<artifactId>vertx-test</artifactId>
 	<name>Vert.x Testproject</name>
 	<version>1.0.0-SNAPSHOT</version>
+<!-- 	<groupId>de.braintags</groupId> -->
 	
 	<parent>
 	  <groupId>de.braintags</groupId>
@@ -15,11 +16,12 @@
 	  
 <!-- 	    <groupId>io.vertx</groupId> -->
 <!-- 	    <artifactId>vertx-ext-parent</artifactId> -->
-<!-- 	    <version>16</version> -->
+<!-- 	    <version>17-SNAPSHOT</version> -->
 	</parent>
 	
 
   <properties>
+    <stack.version>3.0.0</stack.version>
     <doc.skip>false</doc.skip>
     <source.skip>false</source.skip>
     <maven.test.skip>true</maven.test.skip>
@@ -28,9 +30,10 @@
     <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
     <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
     <maven.javadoc.failOnError>true</maven.javadoc.failOnError>
+<!--     <maven.compiler.compilerReuseStrategy>${alwaysNew}</maven.compiler.compilerReuseStrategy> -->
     
   </properties>
-
+ 
 <!--   <dependencyManagement> -->
 <!--     <dependencies> -->
 <!--       <dependency> -->
