@@ -1,9 +1,8 @@
 == Using package-info to create real documentation
 
-Using the package-info as documentation source has several advantages
+Using the package-info as documentation source has several advantages:
 
-. 
-* We are keeping code and documentation one more time together, like with javadoc. 
+* We are keeping code and documentation one more time together, like with javadoc
 * We are able to link to classes inside the documentation, those links are aiming to the javadoc
 * We are able to link to methods of a class, which will display the content of the method at that place inside the generated documentation 
 
@@ -14,7 +13,9 @@ Using the package-info as documentation source has several advantages
 * VERY IMPORTANT: add some annotations to the package-info before the package definition:
 ** @Document(fileName = "index.adoc")
 ** @GenModule(name = "vertx-test", groupPackageName = "de.braintags")
-Especially the parameter groupPackageName is very important and must fit the current package. Its default value is "io.vertx". 
+Especially the parameter groupPackageName is very important and must fit the current package.
+
+Its default value is "io.vertx". 
 If you don't adapt that to your classpath, some very unexpected results will and errors occur ( see above )
 
 

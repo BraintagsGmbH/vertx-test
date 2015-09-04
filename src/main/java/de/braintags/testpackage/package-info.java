@@ -14,8 +14,9 @@
 /**
  * == Using package-info to create real documentation
  * 
- * Using the package-info as documentation source has several advantages. 
- * * We are keeping code and documentation one more time together, like with javadoc. 
+ * Using the package-info as documentation source has several advantages:
+ * 
+ * * We are keeping code and documentation one more time together, like with javadoc
  * * We are able to link to classes inside the documentation, those links are aiming to the javadoc
  * * We are able to link to methods of a class, which will display the content of the method at that place inside the generated documentation 
  * 
