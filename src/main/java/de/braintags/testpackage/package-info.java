@@ -72,6 +72,17 @@
  * </dependency>
  * ----
  * 
+ * Including a complete source file
+ * 
+ * [source,java]
+ * ----
+ * include::{$sourcedirectory}/../../../java/examples/Examples.java[]
+ * ----
+ * 
+ * 
+ * 
+ * 
+ * 
  * More information you will find at http://www.methods.co.nz/asciidoc/userguide.html#_text_formatting
  * 
  * === Currently known problems:
