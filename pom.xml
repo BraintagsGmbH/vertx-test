@@ -7,86 +7,89 @@
 	<artifactId>vertx-test</artifactId>
 	<name>Vert.x Testproject</name>
 	<version>1.0.0-SNAPSHOT</version>
-<!-- 	<groupId>de.braintags</groupId> -->
-	
+	<!-- <groupId>de.braintags</groupId> -->
+
 	<parent>
-	  <groupId>de.braintags</groupId>
-	  <artifactId>btVertxBasePOM</artifactId>
-	  <version>4</version>
-	  
-<!-- 	    <groupId>io.vertx</groupId> -->
-<!-- 	    <artifactId>vertx-ext-parent</artifactId> -->
-<!-- 	    <version>17-SNAPSHOT</version> -->
+		<groupId>de.braintags</groupId>
+		<artifactId>btVertxBasePOM</artifactId>
+		<version>4</version>
+
+		<!-- <groupId>io.vertx</groupId> -->
+		<!-- <artifactId>vertx-ext-parent</artifactId> -->
+		<!-- <version>17-SNAPSHOT</version> -->
 	</parent>
-	
-
-  <properties>
-    <stack.version>3.0.0</stack.version>
-    <doc.skip>false</doc.skip>
-    <source.skip>false</source.skip>
-    <maven.test.skip>true</maven.test.skip>
-    <pac4j.version>1.6.0</pac4j.version>
-    
-    <maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
-    <maven.compiler.showWarnings>true</maven.compiler.showWarnings>
-    <maven.javadoc.failOnError>true</maven.javadoc.failOnError>
-<!--     <maven.compiler.compilerReuseStrategy>${alwaysNew}</maven.compiler.compilerReuseStrategy> -->
-    
-  </properties>
- 
-<!--   <dependencyManagement> -->
-<!--     <dependencies> -->
-<!--       <dependency> -->
-<!--         <groupId>io.vertx</groupId> -->
-<!--         <artifactId>vertx-dependencies</artifactId> -->
-<!--         <version>${stack.version}</version> -->
-<!--         <type>pom</type> -->
-<!--         <scope>import</scope> -->
-<!--       </dependency> -->
-<!--     </dependencies> -->
-<!--   </dependencyManagement> -->
-
-<!--   <dependencies> -->
-<!--     <dependency> -->
-<!--       <groupId>io.vertx</groupId> -->
-<!--       <artifactId>vertx-core</artifactId> -->
-<!--     </dependency> -->
-<!--     <dependency> -->
-<!--       <groupId>io.vertx</groupId> -->
-<!--       <artifactId>vertx-codegen</artifactId> -->
-<!--       <scope>provided</scope> -->
-<!--     </dependency> -->
-<!--     <dependency> -->
-<!--       <groupId>io.vertx</groupId> -->
-<!--       <artifactId>vertx-docgen</artifactId> -->
-<!--       <scope>provided</scope> -->
-<!--     </dependency> -->
-<!--     <dependency> -->
-<!--       <groupId>io.vertx</groupId> -->
-<!--       <artifactId>vertx-codetrans</artifactId> -->
-<!--       <scope>provided</scope> -->
-<!--     </dependency> -->
-<!--     <dependency> -->
-<!--       <groupId>io.vertx</groupId> -->
-<!--       <artifactId>vertx-lang-groovy</artifactId> -->
-<!--       <optional>true</optional> -->
-<!--     </dependency> -->
-<!--     <dependency> -->
-<!--       <groupId>io.vertx</groupId> -->
-<!--       <artifactId>vertx-lang-ruby</artifactId> -->
-<!--       <optional>true</optional> -->
-<!--     </dependency> -->
-<!--     <dependency> -->
-<!--       <groupId>io.vertx</groupId> -->
-<!--       <artifactId>vertx-lang-js</artifactId> -->
-<!--       <optional>true</optional> -->
-<!--     </dependency> -->
-<!--     <dependency> -->
-<!--       <groupId>io.vertx</groupId> -->
-<!--       <artifactId>vertx-rx-java</artifactId> -->
-<!--       <optional>true</optional> -->
-<!--     </dependency> -->
-<!--   </dependencies> -->
 
 
+	<properties>
+		<stack.version>3.0.0</stack.version>
+		<doc.skip>false</doc.skip>
+		<source.skip>false</source.skip>
+		<maven.test.skip>true</maven.test.skip>
+		<pac4j.version>1.6.0</pac4j.version>
+
+		<maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+		<maven.compiler.showWarnings>true</maven.compiler.showWarnings>
+		<maven.javadoc.failOnError>true</maven.javadoc.failOnError>
+	</properties>
+
+
+	<!-- https://github.com/BraintagsGmbH/BtBase.git -->
+	<scm>
+		<connection>scm:git:git@github.com:BraintagsGmbH/vertx-test.git</connection>
+		<developerConnection>scm:git:git@github.com:BraintagsGmbH/vertx-test.git</developerConnection>
+		<url>git@github.com:BraintagsGmbH/vertx-test.git</url>
+	</scm>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+	</distributionManagement>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5.3</version>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<useReleaseProfile>false</useReleaseProfile>
+					<releaseProfiles>release</releaseProfiles>
+					<goals>deploy</goals>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.6</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.6</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>false</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
