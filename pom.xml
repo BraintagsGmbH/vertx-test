@@ -21,8 +21,8 @@
 
 	<properties>
 		<stack.version>3.0.0</stack.version>
-		<doc.skip>false</doc.skip>
-		<source.skip>false</source.skip>
+		<doc.skip>true</doc.skip>
+		<source.skip>true</source.skip>
 		<maven.test.skip>true</maven.test.skip>
 		<pac4j.version>1.6.0</pac4j.version>
 
